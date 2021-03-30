@@ -1,7 +1,5 @@
 package com.matta.domain.posts;
 
-import com.matta.domain.Posts.Posts;
-import com.matta.domain.Posts.PostsRepository;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -31,9 +31,13 @@ public class PostsRepositoryTest {
 
         //given
         String content = "테스트 게시글 본문";
+        int stars = 5;
+        LocalDate visitedDate = LocalDate.of(2020,10,31);
 
         postsRepository.save(Posts.builder()
                 .content(content)
+                .stars(stars)
+                .visitedDate(visitedDate)
                 .build());
 
         //when
@@ -42,6 +46,29 @@ public class PostsRepositoryTest {
         //then
         Posts posts = postsList.get(0);
         assertThat(posts.getContent()).isEqualTo(content);
+        assertThat(posts.getStars()).isEqualTo(stars);
+        assertThat(posts.getVisitedDate()).isEqualTo(visitedDate);
+    }
 
+    @Test
+    public void BaseTimeEntity_등록(){
+
+        // given
+        LocalDateTime now = LocalDateTime.of(2021,3,30,0,0,0);
+        postsRepository.save(Posts.builder()
+                .content("content")
+                .stars(5)
+                .visitedDate(LocalDate.of(2020,10,31))
+                .build());
+
+        // when
+        List<Posts> postsList = postsRepository.findAll();
+
+        // then
+        Posts posts = postsList.get(0);
+
+        System.out.println(">>>>>>>>>> CreateDate : " + posts.getCreateDate());
+
+        assertThat(posts.getCreateDate()).isAfter(now);
     }
 }

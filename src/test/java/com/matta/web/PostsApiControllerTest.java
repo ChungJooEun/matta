@@ -1,7 +1,7 @@
 package com.matta.web;
 
-import com.matta.domain.Posts.Posts;
-import com.matta.domain.Posts.PostsRepository;
+import com.matta.domain.posts.Posts;
+import com.matta.domain.posts.PostsRepository;
 import com.matta.web.dto.PostsSaveRequestDto;
 import com.matta.web.dto.PostsUpdateRequestDto;
 import org.junit.After;
@@ -18,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -45,9 +46,13 @@ public class PostsApiControllerTest {
 
         // given
         String content = "테스트 게시물 내용";
+        int stars = 5;
+        LocalDate visitedDate = LocalDate.of(2020,10,31);
 
         PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder()
                 .content(content)
+                .stars(stars)
+                .visitedDate(visitedDate)
                 .build();
         String url = "http://localhost:" + port + "/api/v1/posts";
 
@@ -60,6 +65,8 @@ public class PostsApiControllerTest {
 
         List<Posts> all = postsRepository.findAll();
         assertThat(all.get(0).getContent()).isEqualTo(content);
+        assertThat(all.get(0).getStars()).isEqualTo(stars);
+        assertThat(all.get(0).getVisitedDate()).isEqualTo(visitedDate);
     }
 
     @Test
@@ -69,14 +76,20 @@ public class PostsApiControllerTest {
         Posts savePosts = postsRepository.save(
                 Posts.builder()
                         .content("테스트 내용")
+                        .stars(1)
+                        .visitedDate(LocalDate.of(2020,10,31))
                         .build());
 
         Long updatePostsId = savePosts.getPostsId();
         String expectedContent = "CONTENT";
+        int expectedStars = 3;
+        LocalDate expectedVisitedDate = LocalDate.of(2019,10,31);
 
         PostsUpdateRequestDto requestDto = PostsUpdateRequestDto
                 .builder()
                 .content(expectedContent)
+                .stars(expectedStars)
+                .visitedDate(expectedVisitedDate)
                 .build();
 
         String url = "http://localhost:" + port + "/api/v1/posts/" + updatePostsId;
@@ -92,6 +105,8 @@ public class PostsApiControllerTest {
 
         List<Posts> all = postsRepository.findAll();
         assertThat(all.get(0).getContent()).isEqualTo(expectedContent);
+        assertThat(all.get(0).getStars()).isEqualTo(expectedStars);
+        assertThat(all.get(0).getVisitedDate()).isEqualTo(expectedVisitedDate);
     }
 
 }

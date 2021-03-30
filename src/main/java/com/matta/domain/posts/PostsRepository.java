@@ -1,4 +1,4 @@
-package com.matta.domain.Posts;
+package com.matta.domain.posts;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

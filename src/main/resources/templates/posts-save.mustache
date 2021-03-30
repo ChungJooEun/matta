@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>MaTTa</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- DatePicker -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+
+    <!-- Star Rate -->
+    <link rel="stylesheet" href="/css/stars.css">
+</head>
+<body>
+
+<h1>게시글 등록</h1>
+
+<div class="col-md-12">
+    <div class="col-md-4">
+        <form>
+            <div class="form-group">
+                <label for="visitedDay"> 방문 날짜 </label>
+                <input type="text" id="visitedDate">
+            </div>
+
+            <!-- 맛집 위치 추가 -->
+
+            <div class="form-group">
+                <label for="content"> 내용 </label>
+                <textarea class="form-control" id="content" placeholder="내용을 입력하세요"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="stars"> 별점 </label>
+
+                <div class="starRev">
+                    <span class="starR on">별1</span>
+                    <span class="starR">별2</span>
+                    <span class="starR">별3</span>
+                    <span class="starR">별4</span>
+                    <span class="starR">별5</span>
+                </div>
+            </div>
+        </form>
+
+        <a href="/" role="button" class="btn btn-light">취소</a>
+        <button type="button" class="btn btn-warning">등록</button>
+
+    </div>
+</div>'
+
+<!-- posts-save.js 추가 -->
+<script src="/js/app/posts-save.js"></script>
+<script src="/js/app/stars.js"></script>

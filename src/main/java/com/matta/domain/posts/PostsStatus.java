@@ -1,4 +1,4 @@
-package com.matta.domain.Posts;
+package com.matta.domain.posts;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

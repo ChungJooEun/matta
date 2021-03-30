@@ -1,7 +1,7 @@
 package com.matta.service;
 
-import com.matta.domain.Posts.Posts;
-import com.matta.domain.Posts.PostsRepository;
+import com.matta.domain.posts.Posts;
+import com.matta.domain.posts.PostsRepository;
 import com.matta.web.dto.PostsResponseDto;
 import com.matta.web.dto.PostsSaveRequestDto;
 import com.matta.web.dto.PostsUpdateRequestDto;
@@ -25,7 +25,7 @@ public class PostsService {
 
         Posts posts = postsRepository.findById(postsId).orElseThrow(()->
                 new IllegalArgumentException("해당 게시글이 없습니다. posts id : " + postsId));
-        posts.update(requestDto.getContent());
+        posts.update(requestDto.getContent(), requestDto.getStars(), requestDto.getVisitedDate());
 
         return postsId;
     }
