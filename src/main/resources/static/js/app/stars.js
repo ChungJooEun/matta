@@ -1,5 +1,7 @@
-$('.starRev span').click(function(){
-    $(this).parent().children('span').removeClass('on');
-    $(this).addClass('on').prevAll('span').addClass('on');
+$('.starRev a').click(function(){
+    $(this).parent().children('a').removeClass('on');
+    $(this).addClass('on').prevAll('a').addClass('on');
+
     return false;
 });
+

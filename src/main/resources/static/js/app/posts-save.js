@@ -1,4 +1,5 @@
-$(function(){
+// datePicker init method
+var initDatePicker = function(){
     $("#visitedDate").datepicker({
         nextText: '다음 달',
         prevText: '이전 달',
@@ -13,4 +14,49 @@ $(function(){
         showMonthAfterYear: true,
         yearSuffix: '년'
     });
-});
+};
+
+var parseLocalDate = function(){
+    return $('#visitedDate').val().replace(/\./gi, "-");
+};
+
+// 별점 가져오기
+var calcStarRate = function(){
+    var starRate = $('.starR.on').last().attr("value");
+    return starRate;
+};
+
+// 메인
+var main = {
+
+    init : function(){
+        initDatePicker();
+
+        var _this = this;
+        $('#btn-posts-save').on('click',function(){
+            _this.save();
+        });
+    },
+    save : function(){
+        var requestData = {
+            content: $('#content').val(),
+            stars: calcStarRate(),
+            visitedDate: parseLocalDate()
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '/api/v1/posts',
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(requestData)
+        }).done(function(){
+            alert('글이 등록되었습니다.');
+            window.location.herf = '/';
+        }).fail(function(error){
+            alert(JSON.stringify(error))
+        });
+    }
+};
+
+main.init();

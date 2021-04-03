@@ -1,10 +1,4 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title>MaTTa</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+{{>layout/header}}
 
     <!-- DatePicker -->
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
@@ -13,6 +7,7 @@
 
     <!-- Star Rate -->
     <link rel="stylesheet" href="/css/stars.css">
+
 </head>
 <body>
 
@@ -37,21 +32,24 @@
                 <label for="stars"> 별점 </label>
 
                 <div class="starRev">
-                    <span class="starR on">별1</span>
-                    <span class="starR">별2</span>
-                    <span class="starR">별3</span>
-                    <span class="starR">별4</span>
-                    <span class="starR">별5</span>
+                    <a class="starR on" value="1">1</a>
+                    <a class="starR" value="2">2</a>
+                    <a class="starR" value="3">3</a>
+                    <a class="starR" value="4">4</a>
+                    <a class="starR" value="5">5</a>
                 </div>
             </div>
         </form>
 
         <a href="/" role="button" class="btn btn-light">취소</a>
-        <button type="button" class="btn btn-warning">등록</button>
+        <button type="button" class="btn btn-warning" id="btn-posts-save">등록</button>
 
     </div>
-</div>'
+</div>
 
-<!-- posts-save.js 추가 -->
+<!-- posts js -->
+<!-- 별점 js-->
 <script src="/js/app/posts-save.js"></script>
 <script src="/js/app/stars.js"></script>
+
+{{>layout/footer}}

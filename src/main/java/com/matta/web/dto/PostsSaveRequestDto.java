@@ -1,9 +1,11 @@
 package com.matta.web.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.matta.domain.posts.Posts;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -12,8 +14,11 @@ import java.time.LocalDate;
 public class PostsSaveRequestDto {
 
     private String content;
-    private int stars;
-    private LocalDate visitedDate;
+    private int stars = 0;
+
+    // @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    LocalDate visitedDate;
 
     @Builder
     public PostsSaveRequestDto(String content, int stars, LocalDate visitedDate){
@@ -24,6 +29,7 @@ public class PostsSaveRequestDto {
     }
 
     public Posts toEntity(){
+
         return Posts.builder()
                 .content(this.content)
                 .stars(this.stars)
