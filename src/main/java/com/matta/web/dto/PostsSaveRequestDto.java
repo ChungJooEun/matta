@@ -1,6 +1,5 @@
 package com.matta.web.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.matta.domain.posts.Posts;
 import lombok.Builder;
 import lombok.Getter;

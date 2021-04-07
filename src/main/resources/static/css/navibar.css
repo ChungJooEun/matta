@@ -1,0 +1,10 @@
+.bg-color{
+    background: #ffe07e;
+    margin-bottom: 10px;
+}
+.logo_img{
+    margin-right: 15px;
+    width: 40px;
+    height: 40px;
+    filter: drop-shadow(1px 1px 1px gray);
+}

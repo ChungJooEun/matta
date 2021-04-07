@@ -16,7 +16,7 @@ var initDatePicker = function(){
     });
 };
 
-var parseLocalDate = function(){
+var parseToLocalDate = function(){
     return $('#visitedDate').val().replace(/\./gi, "-");
 };
 
@@ -41,7 +41,7 @@ var main = {
         var requestData = {
             content: $('#content').val(),
             stars: calcStarRate(),
-            visitedDate: parseLocalDate()
+            visitedDate: parseToLocalDate()
         };
 
         $.ajax({
