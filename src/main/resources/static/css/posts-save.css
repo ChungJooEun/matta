@@ -1,0 +1,34 @@
+#main_wrap{
+    witth: 100%;
+}
+
+#main_left_wrap{
+    float: left;
+    width: 20%;
+    margin: 0 auto;
+}
+
+#main_center_wrap{
+    float: left;
+    width: 55%;
+    margin: 0 auto;
+}
+
+#main_right_wrap{
+    float: left;
+    widht: 35%;
+    margin: 0 auto;
+}
+
+#visitedDate{
+    width: 35%;
+    min-width: 50%;
+}
+
+.content-div{
+    min-width: 50%;
+}
+
+.starRev-div{
+    min-width: 170px;
+}

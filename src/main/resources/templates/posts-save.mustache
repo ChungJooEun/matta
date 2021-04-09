@@ -1,5 +1,7 @@
 {{>layout/header}}
 
+    <!-- css -->
+    <link rel="stylesheet" href="/css/posts-save.css">
     <!-- DatePicker -->
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -14,39 +16,52 @@
 <!--navigation bar-->
 {{>layout/navibar}}
 
-<h1>게시글 등록</h1>
+<!-- content -->
+<div id="main_wrap">
+    <div class="wrap" id="main_left_wrap">
+        <h1> 목록 </h1>
+    </div>
 
-<div class="col-md-12">
-    <div class="col-md-4">
-        <form>
-            <div class="form-group">
-                <label for="visitedDay"> 방문 날짜 </label>
-                <input type="text" id="visitedDate">
+    <div class="wrap" id="main_center_wrap">
+        <div class="col-md-12">
+            <div class="col-md-12">
+
+                <h1>게시글 등록 </h1>
+                <form>
+                    <div class="form-group">
+                        <label for="visitedDay"> 방문 날짜 </label>
+                        <input type="text" class="form-control" id="visitedDate">
+                    </div>
+
+                    <!-- 맛집 위치 추가 -->
+
+                    <div class="form-group content-div">
+                        <label for="content"> 내용 </label>
+                        <textarea class="form-control" id="content" placeholder="내용을 입력하세요"></textarea>
+                    </div>
+
+                    <div class="form-group starRev-div">
+                        <label for="stars"> 별점 </label>
+
+                        <div class="starRev">
+                            <a class="starR on" value="1">1</a>
+                            <a class="starR" value="2">2</a>
+                            <a class="starR" value="3">3</a>
+                            <a class="starR" value="4">4</a>
+                            <a class="starR" value="5">5</a>
+                        </div>
+                    </div>
+                </form>
+
+                <a href="/" role="button" class="btn btn-light">취소</a>
+                <button type="button" class="btn btn-warning" id="btn-posts-save">등록</button>
+
             </div>
+        </div>
+    </div>
 
-            <!-- 맛집 위치 추가 -->
-
-            <div class="form-group">
-                <label for="content"> 내용 </label>
-                <textarea class="form-control" id="content" placeholder="내용을 입력하세요"></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="stars"> 별점 </label>
-
-                <div class="starRev">
-                    <a class="starR on" value="1">1</a>
-                    <a class="starR" value="2">2</a>
-                    <a class="starR" value="3">3</a>
-                    <a class="starR" value="4">4</a>
-                    <a class="starR" value="5">5</a>
-                </div>
-            </div>
-        </form>
-
-        <a href="/" role="button" class="btn btn-light">취소</a>
-        <button type="button" class="btn btn-warning" id="btn-posts-save">등록</button>
-
+    <div class="wrap" id="main_right_wrap">
+        <h1> 지도 </h1>
     </div>
 </div>
 
